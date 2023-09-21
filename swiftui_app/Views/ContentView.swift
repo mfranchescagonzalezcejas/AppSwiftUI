@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var store = CharacterStore()
+    let columns = Array(repeating: GridItem(.flexible()), count: 2)
 
     var body: some View {
         if store.info.isEmpty {
@@ -21,10 +22,15 @@ struct ContentView: View {
                 }
         } else {
             NavigationStack{
-                List(store.info.sorted(by: { $0.role == "Main" && $1.role != "Main" }), id: \.id) { character in
-                    NavigationLink(value: character) {
-                      CharacterCellView(character: character)
+                ScrollView {
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        ForEach(store.info.sorted(by: { $0.role == "Main" && $1.role != "Main" }), id: \.id) { character in
+                            NavigationLink(value: character) {
+                                CharacterCellView(character: character)
+                            }
+                        }
                     }
+                    .padding()
                 }
                 .listStyle(PlainListStyle())
                 .navigationBarTitle("Characters")
@@ -32,10 +38,10 @@ struct ContentView: View {
                     CharacterDetailView(character: character)
                 }
             }
-            
         }
     }
 }
+
 
 
 struct ContentView_Previews: PreviewProvider {
