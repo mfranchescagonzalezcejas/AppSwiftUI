@@ -7,24 +7,30 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @ObservedObject var store = CharacterStore()
+struct CharacterListView: View {
+    @StateObject private var viewModel : CharacterListViewModel
+    
     let columns = Array(repeating: GridItem(.flexible()), count: 2)
-
+    
+    init(viewModel: CharacterListViewModel = CharacterListViewModel()) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
+    
     var body: some View {
-        if store.info.isEmpty {
+        
+        if viewModel.baseState.isLoading{
             ProgressView()
                 .scaleEffect(2)
                 .onAppear {
-                    store.loadJikanAPI() {
-                        print("Datos cargados")
-                    }
+                    viewModel.loadData()
                 }
         } else {
+            
             NavigationStack{
+                
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(store.info.sorted(by: { $0.role == "Main" && $1.role != "Main" }), id: \.id) { character in
+                        ForEach(viewModel.baseState.characterList.sorted(by: { $0.role == "Main" && $1.role != "Main" }), id: \.id) { character in
                             NavigationLink(value: character) {
                                 CharacterCellView(character: character)
                             }
@@ -32,8 +38,23 @@ struct ContentView: View {
                     }
                     .padding()
                 }
+                .background(.black.opacity(0.9))
                 .listStyle(PlainListStyle())
-                .navigationBarTitle("Characters")
+                .navigationTitle("Characters")
+                .toolbar{
+                    Button(action: {
+                        viewModel.baseState.isLoading = true
+                            }) {
+                                Image(systemName: "arrow.counterclockwise.circle.fill")
+                                    .foregroundColor(Color.black) // Cambia el color del icono a negro
+                                    .background(Color.white) // Establece el fondo en blanco
+                                    .cornerRadius(15)
+
+                                
+                            }
+                }
+                .toolbarBackground(.red, for: .navigationBar)
+                .toolbarBackground(.visible, for: .navigationBar)
                 .navigationDestination(for: Character.self) { character in
                     CharacterDetailView(character: character)
                 }
@@ -63,9 +84,11 @@ struct ContentView_Previews: PreviewProvider {
             Character(id :154437,name:"Acilia" ,role:"Supporting" ,image_url:"https://cdn.myanimelist.net/images/characters/8/357397.jpg?s=c864f114dc28966621318e842620eeff" ,imageData:UIImage(named:"brookImage")?.jpegData(compressionQuality :1.0)),
             Character(id :23533,name:"Agotogi" ,role:"Supporting" ,image_url:"https://cdn.myanimelist.net/images/characters/13/56874.jpg?s=30af0ad676db81cd9d5ea9520227fec1" ,imageData:UIImage(named:"brookImage")?.jpegData(compressionQuality :1.0))
         ]
-
+        let sampleViewModel = CharacterListViewModel()
+        sampleViewModel.baseState.characterList = sampleCharacters
+        sampleViewModel.baseState.isLoading = false
         
-        ContentView(store: CharacterStore(info: sampleCharacters))
+        return CharacterListView(viewModel: sampleViewModel)
     }
 }
 

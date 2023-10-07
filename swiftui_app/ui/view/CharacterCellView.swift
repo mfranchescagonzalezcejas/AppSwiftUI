@@ -28,20 +28,28 @@ struct CharacterCellView: View {
                 .ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10))
         }
         .frame(width: 140,height: 200)
-        .padding(10)
+        .padding(20)
         .background(
             Group {
                 if let data = character.imageData, let uiImage = UIImage(data: data) {
                     Image(uiImage: uiImage)
                         .resizable()
-                        .aspectRatio(contentMode: .fill)
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(20)//afecta imagen interior
+                        .padding(5) // Ajusta la cantidad de espacio para el borde exterior
+                        .background(.yellow) // Cambia el color del borde exterior según tus preferencias
+                        .cornerRadius(20)//afeta border exterior
+
+                    
                 } else {
                     Color.clear
                 }
             }
         )
-        .cornerRadius(10)
+        .cornerRadius(15)
         .shadow(radius: 5)
+        
+        
     }
 }
 
@@ -51,5 +59,6 @@ struct CharacterCellView_Previews: PreviewProvider {
     static var previews: some View {
         let brook = Character(id: 5627, name: "Monkey D., Luffy", role: "Main", image_url: "https://cdn.myanimelist.net/images/characters/10/161005.jpg?s=8e3191d4d9691fffe3dafaefaf086014", imageData: UIImage(named: "brookImage")?.jpegData(compressionQuality: 1.0))
         CharacterCellView(character: brook)
+            
     }
 }

@@ -2,14 +2,13 @@
 //  Character.swift
 //  swiftui_app
 //
-//  Created by Mercedes Franchesca Gonzalez Cejas on 20/9/23.
+//  Created by Mercedes Franchesca Gonzalez Cejas on 3/10/23.
 //
 
-import SwiftUI
-import Combine
 import Foundation
 
 class Character: Hashable {
+    
     let id: Int64
     let name: String
     let role: String
@@ -32,10 +31,11 @@ class Character: Hashable {
         return "name: \(name), role: \(role), image_url: \(image_url)"
     }
     
+    // Implementación de Hashable
     static func == (lhs: Character, rhs: Character) -> Bool {
         return lhs.id == rhs.id
     }
-    
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
