@@ -9,16 +9,13 @@ import Foundation
 
 class LocalImpl: Local{
     
-    private var database: Database = DatabaseImpl()
+    private var database: Network = NetworkImpl()
     
     func getItemsList() async throws -> [CharacterVO] {
         return try await database.getItemsList()
     }
 
-    func getItemByID(id: Int64) async throws -> CharacterVO? {
+    func getItemByID(id: String) async throws -> CharacterVO? {
         return try await database.getItemByID(id: id)
     }
-
-    
-    
 }

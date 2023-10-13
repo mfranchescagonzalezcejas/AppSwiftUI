@@ -7,21 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BE2F27922ACC0C76006527AD /* CharacterVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2F27902ACC0C76006527AD /* CharacterVO.swift */; };
-		BE2F279D2ACC10EC006527AD /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2F279C2ACC10EC006527AD /* Database.swift */; };
-		BE2F279F2ACC1183006527AD /* DatabaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2F279E2ACC1183006527AD /* DatabaseImpl.swift */; };
+		BE1EA8CB2AD6A50B00341D3F /* CoroutinesUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1EA8CA2AD6A50B00341D3F /* CoroutinesUtils.swift */; };
+		BE2F279D2ACC10EC006527AD /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2F279C2ACC10EC006527AD /* Network.swift */; };
+		BE2F279F2ACC1183006527AD /* NetworkImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2F279E2ACC1183006527AD /* NetworkImpl.swift */; };
 		BE2F27A12ACC11E0006527AD /* Local.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2F27A02ACC11E0006527AD /* Local.swift */; };
 		BE2F27A32ACC11E9006527AD /* LocalImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2F27A22ACC11E9006527AD /* LocalImpl.swift */; };
 		BE2F27A62ACC120C006527AD /* DataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2F27A52ACC120C006527AD /* DataMapper.swift */; };
 		BE2F27A82ACC1238006527AD /* RepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2F27A72ACC1238006527AD /* RepositoryImpl.swift */; };
 		BE2F27AC2ACC12AB006527AD /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2F27AB2ACC12AB006527AD /* Repository.swift */; };
-		BE2F27AE2ACC1419006527AD /* CoroutinesUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2F27AD2ACC1419006527AD /* CoroutinesUtils.swift */; };
 		BE2F27B02ACC1611006527AD /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2F27AF2ACC1611006527AD /* Character.swift */; };
 		BE2F27B22ACC1C38006527AD /* BaseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2F27B12ACC1C38006527AD /* BaseState.swift */; };
 		BE4F2D812AB31BCF00B5A2B2 /* swiftui_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4F2D802AB31BCF00B5A2B2 /* swiftui_appApp.swift */; };
 		BE4F2D832AB31BCF00B5A2B2 /* CharacterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4F2D822AB31BCF00B5A2B2 /* CharacterListView.swift */; };
 		BE4F2D852AB31BD100B5A2B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE4F2D842AB31BD100B5A2B2 /* Assets.xcassets */; };
 		BE4F2D882AB31BD100B5A2B2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE4F2D872AB31BD100B5A2B2 /* Preview Assets.xcassets */; };
+		BE5E56452AD540410006FF5E /* CharacterVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5E56442AD540410006FF5E /* CharacterVO.swift */; };
 		BE6FA7922ABC24A800AB58B1 /* CharacterCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6FA7912ABC24A800AB58B1 /* CharacterCellView.swift */; };
 		BEC5612F2ACABB9900EDE29D /* CharacterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC5612E2ACABB9900EDE29D /* CharacterListViewModel.swift */; };
 		BEC561312ACABD4500EDE29D /* CharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC561302ACABD4500EDE29D /* CharacterDetailViewModel.swift */; };
@@ -29,15 +29,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BE2F27902ACC0C76006527AD /* CharacterVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CharacterVO.swift; path = swiftui_app/data/model/CharacterVO.swift; sourceTree = SOURCE_ROOT; };
-		BE2F279C2ACC10EC006527AD /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
-		BE2F279E2ACC1183006527AD /* DatabaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseImpl.swift; sourceTree = "<group>"; };
+		BE1EA8CA2AD6A50B00341D3F /* CoroutinesUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoroutinesUtils.swift; sourceTree = "<group>"; };
+		BE2F279C2ACC10EC006527AD /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		BE2F279E2ACC1183006527AD /* NetworkImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImpl.swift; sourceTree = "<group>"; };
 		BE2F27A02ACC11E0006527AD /* Local.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Local.swift; sourceTree = "<group>"; };
 		BE2F27A22ACC11E9006527AD /* LocalImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalImpl.swift; sourceTree = "<group>"; };
 		BE2F27A52ACC120C006527AD /* DataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMapper.swift; sourceTree = "<group>"; };
 		BE2F27A72ACC1238006527AD /* RepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryImpl.swift; sourceTree = "<group>"; };
 		BE2F27AB2ACC12AB006527AD /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
-		BE2F27AD2ACC1419006527AD /* CoroutinesUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoroutinesUtils.swift; path = "../New Group/CoroutinesUtils.swift"; sourceTree = "<group>"; };
 		BE2F27AF2ACC1611006527AD /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		BE2F27B12ACC1C38006527AD /* BaseState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseState.swift; sourceTree = "<group>"; };
 		BE4F2D7D2AB31BCF00B5A2B2 /* swiftui_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftui_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +44,7 @@
 		BE4F2D822AB31BCF00B5A2B2 /* CharacterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListView.swift; sourceTree = "<group>"; };
 		BE4F2D842AB31BD100B5A2B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE4F2D872AB31BD100B5A2B2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BE5E56442AD540410006FF5E /* CharacterVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterVO.swift; sourceTree = "<group>"; };
 		BE6FA7912ABC24A800AB58B1 /* CharacterCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCellView.swift; sourceTree = "<group>"; };
 		BEC5612E2ACABB9900EDE29D /* CharacterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModel.swift; sourceTree = "<group>"; };
 		BEC561302ACABD4500EDE29D /* CharacterDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModel.swift; sourceTree = "<group>"; };
@@ -62,6 +62,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE1EA8C92AD6A50B00341D3F /* util */ = {
+			isa = PBXGroup;
+			children = (
+				BE1EA8CA2AD6A50B00341D3F /* CoroutinesUtils.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
 		BE2F27942ACC0CBA006527AD /* domain */ = {
 			isa = PBXGroup;
 			children = (
@@ -74,8 +82,8 @@
 		BE2F27952ACC0D10006527AD /* data_source */ = {
 			isa = PBXGroup;
 			children = (
-				BE2F279C2ACC10EC006527AD /* Database.swift */,
-				BE2F279E2ACC1183006527AD /* DatabaseImpl.swift */,
+				BE2F279C2ACC10EC006527AD /* Network.swift */,
+				BE2F279E2ACC1183006527AD /* NetworkImpl.swift */,
 				BE2F27A02ACC11E0006527AD /* Local.swift */,
 				BE2F27A22ACC11E9006527AD /* LocalImpl.swift */,
 			);
@@ -106,14 +114,6 @@
 				BEC5612D2ACABB4800EDE29D /* view_model */,
 			);
 			path = ui;
-			sourceTree = "<group>";
-		};
-		BE2F27B82ACD7872006527AD /* util */ = {
-			isa = PBXGroup;
-			children = (
-				BE2F27AD2ACC1419006527AD /* CoroutinesUtils.swift */,
-			);
-			path = util;
 			sourceTree = "<group>";
 		};
 		BE4F2D742AB31BCF00B5A2B2 = {
@@ -162,19 +162,18 @@
 			path = view;
 			sourceTree = "<group>";
 		};
-		BEC561282ACABA8A00EDE29D /* model */ = {
+		BE5E56432AD540410006FF5E /* model */ = {
 			isa = PBXGroup;
 			children = (
-				BE2F27902ACC0C76006527AD /* CharacterVO.swift */,
+				BE5E56442AD540410006FF5E /* CharacterVO.swift */,
 			);
-			name = model;
-			path = "swiftui_app/New Group/model";
-			sourceTree = SOURCE_ROOT;
+			path = model;
+			sourceTree = "<group>";
 		};
 		BEC5612D2ACABB4800EDE29D /* view_model */ = {
 			isa = PBXGroup;
 			children = (
-				BE2F27B82ACD7872006527AD /* util */,
+				BE1EA8C92AD6A50B00341D3F /* util */,
 				BEC5612E2ACABB9900EDE29D /* CharacterListViewModel.swift */,
 				BEC561302ACABD4500EDE29D /* CharacterDetailViewModel.swift */,
 				BE2F27B12ACC1C38006527AD /* BaseState.swift */,
@@ -185,9 +184,9 @@
 		BEDBD6642ACAB8CC00C5D9BD /* data */ = {
 			isa = PBXGroup;
 			children = (
+				BE5E56432AD540410006FF5E /* model */,
 				BE2F27952ACC0D10006527AD /* data_source */,
 				BE2F27972ACC0D2F006527AD /* mapper */,
-				BEC561282ACABA8A00EDE29D /* model */,
 				BE2F27A72ACC1238006527AD /* RepositoryImpl.swift */,
 			);
 			path = data;
@@ -263,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE5E56452AD540410006FF5E /* CharacterVO.swift in Sources */,
 				BE2F27A62ACC120C006527AD /* DataMapper.swift in Sources */,
 				BEE563A92ABB02CD00B3E7E8 /* CharacterDetailView.swift in Sources */,
 				BE2F27B22ACC1C38006527AD /* BaseState.swift in Sources */,
@@ -270,14 +270,13 @@
 				BE6FA7922ABC24A800AB58B1 /* CharacterCellView.swift in Sources */,
 				BE2F27A82ACC1238006527AD /* RepositoryImpl.swift in Sources */,
 				BE4F2D832AB31BCF00B5A2B2 /* CharacterListView.swift in Sources */,
-				BE2F27AE2ACC1419006527AD /* CoroutinesUtils.swift in Sources */,
+				BE1EA8CB2AD6A50B00341D3F /* CoroutinesUtils.swift in Sources */,
 				BEC561312ACABD4500EDE29D /* CharacterDetailViewModel.swift in Sources */,
 				BE2F27A12ACC11E0006527AD /* Local.swift in Sources */,
 				BE2F27A32ACC11E9006527AD /* LocalImpl.swift in Sources */,
-				BE2F279F2ACC1183006527AD /* DatabaseImpl.swift in Sources */,
+				BE2F279F2ACC1183006527AD /* NetworkImpl.swift in Sources */,
 				BE2F27AC2ACC12AB006527AD /* Repository.swift in Sources */,
-				BE2F279D2ACC10EC006527AD /* Database.swift in Sources */,
-				BE2F27922ACC0C76006527AD /* CharacterVO.swift in Sources */,
+				BE2F279D2ACC10EC006527AD /* Network.swift in Sources */,
 				BE2F27B02ACC1611006527AD /* Character.swift in Sources */,
 				BE4F2D812AB31BCF00B5A2B2 /* swiftui_appApp.swift in Sources */,
 			);

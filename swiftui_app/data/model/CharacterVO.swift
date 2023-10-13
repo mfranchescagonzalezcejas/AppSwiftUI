@@ -10,7 +10,7 @@ import Combine
 import Foundation
 
 class CharacterVO {
-    let id: Int64// pasar a string
+    let id: String// pasar a string
     let name: String
     let role: String
     let image_url: String
@@ -18,7 +18,7 @@ class CharacterVO {
     var nicknames: [String]?
     var about: String?
     
-    init(id: Int64, name: String, role: String, image_url: String, imageData: Data? = nil, nicknames: [String]? = nil, about: String? = nil) {
+    init(id: String, name: String, role: String, image_url: String, imageData: Data? = nil, nicknames: [String]? = nil, about: String? = nil) {
         self.id = id
         self.name = name
         self.role = role
@@ -31,6 +31,4 @@ class CharacterVO {
     func toString() -> String {
         return "name: \(name), role: \(role), image_url: \(image_url)"
     }
-    
 }
-

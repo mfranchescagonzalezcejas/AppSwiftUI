@@ -30,53 +30,102 @@ struct CharacterDetailView: View {
         
     }
 }
+struct CharacterImageView: View {
+    let character: Character
+    var body: some View {
+        VStack {
+            if let data = character.imageData, let uiImage = UIImage(data: data) {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .cornerRadius(20)//afecta imagen interior
+                    .padding(5) // Ajusta la cantidad de espacio para el borde exterior
+                    .background(Color("BorderCell")) // Cambia el color del borde exterior según tus preferencias
+                    .cornerRadius(20)//afeta border exterior
+            }
+        }
+        .frame(width: 140,height: 200)
+        .padding(20)
+        
+    }
+}
+
+
 
 struct CharacterInfoView: View {
     let character: Character?
     
     var body: some View {
-        VStack(alignment: .center, spacing: 10) {
-            if let character = character, let data = character.imageData, let uiImage = UIImage(data: data) {
-                Image(uiImage: uiImage)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 150)
-                    .cornerRadius(10)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(Color.white, lineWidth: 5)
-                    )
-                    .shadow(radius: 5)
-                    .padding(.trailing)
+        let opacity = 0.3
+        
+        
+        VStack(alignment: .leading){
+            
+            HStack {
+                CharacterImageView(character: character!)
+                VStack(alignment: .leading){
+                    Text("Name: \(character?.name ?? "")")
+                        .font(.title)
+                        .foregroundColor(Color("TextColor"))
+                    Text("Role: \(character?.role ?? "")")
+                        .font(.subheadline)
+                        .foregroundColor(Color("TextColor"))
+                    
+                    if let nicknames = character?.nicknames {
+                        Text("Nicknames:")
+                            .font(.headline)
+                            .foregroundColor(Color("TextColor"))
+                        ForEach(nicknames, id: \.self) { nickname in
+                            Text(nickname)
+                                .font(.body)
+                                .foregroundColor(Color("TextColor"))
+                        }
+                    }
+                }.padding(8)
+                    .background{
+                        RoundedRectangle(cornerRadius: 10)
+                            .opacity(opacity)
+                    }
+                
             }
             
-            Text("Name: \(character?.name ?? "")")
-                .font(.title)
-            Text("Role: \(character?.role ?? "")")
-                .font(.subheadline)
             
-            if let nicknames = character?.nicknames {
-                Text("Nicknames:")
-                    .font(.headline)
-                ForEach(nicknames, id: \.self) { nickname in
-                    Text(nickname)
-                        .font(.body)
-                }
-            }
             if let about = character?.about {
-                Text("Descripción: \(about)")
-                    .font(.body)
+                ScrollView {
+                    Text("About:\n\(about)")
+                        .font(.body)
+                        .foregroundColor(Color("TextColor"))
+                }
+                .padding(8)
+                .background{
+                    RoundedRectangle(cornerRadius: 10)
+                        .opacity(opacity)
+                }
             }
         }
         .padding()
+        .background{
+            if let character = character, let data = character.imageData, let uiImage = UIImage(data: data) {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .blur(radius: 10)
+                    .edgesIgnoringSafeArea(.all)
+                    .scaleEffect(1.2) // Aquí es donde se amplía la imagen
+                
+            }
+        }
     }
+    
 }
+
+
+
 
 struct CharacterDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let brook = Character(
-            id: 5627,
+            id: "5627",
             name: "Brook",
             role: "Musician, Swordsman",
             image_url: "https://cdn.myanimelist.net/images/characters/10/161005.jpg",

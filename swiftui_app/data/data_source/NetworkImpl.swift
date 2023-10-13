@@ -7,8 +7,7 @@
 
 import Foundation
 
-class DatabaseImpl: Database {
-        // cambiar  Datbase  Networ y NetworkImpl
+class NetworkImpl: Network {
     func getItemsList() async throws -> [CharacterVO] {
         let url = URL(string: "https://api.jikan.moe/v4/manga/13/characters")!
         var characters: [CharacterVO] = []
@@ -28,23 +27,19 @@ class DatabaseImpl: Database {
                   let role = characterRole as? String,
                   let image_url = characterImageURL["image_url"] as? String
             else {
-                throw NSError(domain: "", code: 0, userInfo: nil) // Proporciona un error más descriptivo aquí
+                throw NSError(domain: "", code: 0, userInfo: nil)
             }
             
-            // Download the image data asynchronously and save it to the Character object
             if let imageURL = URL(string: image_url) {
                 let (data, _) = try await URLSession.shared.data(from: imageURL)
-                let newCharacter = CharacterVO(id: id, name: name, role: role, image_url: image_url, imageData: data)
+                let newCharacter = CharacterVO(id: String(id), name: name, role: role, image_url: image_url, imageData: data)
                 characters.append(newCharacter)
             }
         }
-        
         return characters
     }
-
-
     
-    func getItemByID(id: Int64) async throws -> CharacterVO? {
+    func getItemByID(id: String) async throws -> CharacterVO? {
         let url = URL(string: "https://api.jikan.moe/v4/characters/\(id)")!
         
         let (data, _) = try await URLSession.shared.data(from: url)
@@ -57,7 +52,4 @@ class DatabaseImpl: Database {
         
         return CharacterVO(id: id, name: "", role: "", image_url: "", nicknames: nicknames, about: about)
     }
-
-    
-
 }

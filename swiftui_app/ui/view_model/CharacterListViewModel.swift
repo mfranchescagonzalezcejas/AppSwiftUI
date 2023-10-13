@@ -13,22 +13,17 @@ open class CharacterListViewModel: NSObject, ObservableObject {
     private var coroutinesUtils = CoroutinesUtils()
     
     func loadData() {
+        var characters: [Character] = []
         coroutinesUtils.runBG { [self] in
             do {
-                let characters = try await repository.getItemsList()
-                coroutinesUtils.runMain { [self] in // runMain
-                    baseState.characterList = characters
-                    baseState.isLoading = false
-                }
+                characters = try await repository.getItemsList()
             } catch {
                 print("Error al cargar los datos")
             }
-            //mover aqui el run main
-            
+            coroutinesUtils.runMain { [self] in
+                baseState.characterList = characters
+                baseState.isLoading = false
+            }
         }
     }
 }
-
-
-
-

@@ -7,9 +7,7 @@
 
 import Foundation
 
-protocol Database {
+protocol Network {
     func getItemsList() async throws-> [CharacterVO]
-    func getItemByID(id: Int64) async throws -> CharacterVO?
+    func getItemByID(id: String) async throws -> CharacterVO?
 }
-
-

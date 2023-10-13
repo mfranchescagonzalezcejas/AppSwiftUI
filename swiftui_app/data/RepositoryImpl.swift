@@ -14,7 +14,7 @@ class RepositoryImpl: Repository {
         return try await local.getItemsList().map { $0.toModel() }
     }
 
-    func getItemByID(id: Int64) async throws -> Character? {
+    func getItemByID(id: String) async throws -> Character? {
         if let characterVO = try await local.getItemByID(id: id) {
             return characterVO.toModel()
         } else {
@@ -22,4 +22,3 @@ class RepositoryImpl: Repository {
         }
     }
 }
-

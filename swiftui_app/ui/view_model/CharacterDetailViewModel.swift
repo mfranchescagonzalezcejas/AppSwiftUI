@@ -16,26 +16,21 @@ open class CharacterDetailViewModel: NSObject, ObservableObject {
         self.baseState = baseState
     }
     func loadData() {
+        var characterData: Character = Character(id: "", name: "", role: "", image_url: "")
         coroutinesUtils.runBG { [self] in
             baseState.isLoading = true
             do {
                 if let id = baseState.currentCharacter?.id {
-                    let characterData = try await repository.getItemByID(id: id)
-                    
-                    baseState.currentCharacter?.about = characterData?.about
-                    baseState.currentCharacter?.nicknames = characterData?.nicknames
+                    characterData = try await repository.getItemByID(id: id)!
                 }
             } catch {
                 print("Error loading data: \(error)")
             }
             coroutinesUtils.runMain { [self] in
+                baseState.currentCharacter?.about = characterData.about
+                baseState.currentCharacter?.nicknames = characterData.nicknames
                 baseState.isLoading = false
             }
         }
     }
-
-    
-
-    
-    
 }

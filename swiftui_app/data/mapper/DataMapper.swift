@@ -18,4 +18,3 @@ extension Character {
         return CharacterVO(id: id, name: name, role: role, image_url: image_url, imageData: imageData, nicknames: nicknames, about: about)
     }
 }
-

@@ -9,6 +9,6 @@ import Foundation
 
 protocol Repository{
     func getItemsList() async throws -> [Character]
-    func getItemByID(id: Int64) async throws -> Character?
+    func getItemByID(id: String) async throws -> Character?
     
 }
