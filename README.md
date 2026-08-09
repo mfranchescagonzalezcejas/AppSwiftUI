@@ -1,6 +1,6 @@
-<div align="center">
-
 # SwiftUI Character Browser
+
+<div align="center">
 
 <img src="https://img.shields.io/badge/Swift-SwiftUI-0F6B8F?style=flat-square" alt="Built with Swift and SwiftUI">
 <img src="https://img.shields.io/badge/iOS-16.4%2B-0B8A8F?style=flat-square" alt="iOS 16.4 or later">
@@ -20,7 +20,7 @@ This repository is part of a paired learning exercise: the same idea was also ex
 
 **Requirements**
 
-- macOS with Xcode. The project declares Xcode 14.0 compatibility.
+- macOS with Xcode 14.3 or later.
 - An iOS Simulator or connected iOS device running iOS 16.4 or later.
 - Internet access to reach the Jikan API.
 
