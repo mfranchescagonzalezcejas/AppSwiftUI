@@ -1,62 +1,66 @@
+<div align="center">
+
 # SwiftUI Character Browser
 
-Small iOS practice project built with **Swift** and **SwiftUI** to consume the Jikan API and display manga/anime character data in a native declarative interface.
+<img src="https://img.shields.io/badge/Swift-SwiftUI-0F6B8F?style=flat-square" alt="Built with Swift and SwiftUI">
+<img src="https://img.shields.io/badge/iOS-16.4%2B-0B8A8F?style=flat-square" alt="iOS 16.4 or later">
+<img src="https://img.shields.io/badge/Project-learning%20portfolio-166F8C?style=flat-square" alt="Learning portfolio project">
 
-This repository is part of a pair of learning projects that implement similar functionality twice: once with **UIKit** and once with **SwiftUI**. The goal was to compare both native iOS approaches and understand how the same app flow changes between imperative and declarative UI.
+Small iOS learning project that explores a SwiftUI character browser backed by the public [Jikan API](https://jikan.moe/).
+
+</div>
+
+---
+
+This repository is part of a paired learning exercise: the same idea was also explored with UIKit to compare imperative and declarative native iOS UI.
 
 > Context: this was an open-ended training project created during my internship period at Worldline, after completing iOS learning paths. The idea, functionality, and code published here represent my own learning work and do not include proprietary company code, credentials, internal data, or confidential material.
 
-## What it does
+## Run Locally
 
-- Loads character data from the public **Jikan API**.
-- Displays characters in a SwiftUI `List`.
-- Uses `NavigationStack` and `NavigationLink` for list-to-detail navigation.
-- Shows character images, names, roles, nicknames and description details.
-- Uses `ObservableObject`, `@Published`, `@ObservedObject` and `@State` for simple state handling.
+**Requirements**
 
-## Tech stack
+- macOS with Xcode. The project declares Xcode 14.0 compatibility.
+- An iOS Simulator or connected iOS device running iOS 16.4 or later.
+- Internet access to reach the Jikan API.
 
-| Area | Technology |
-|---|---|
-| Language | Swift |
-| UI framework | SwiftUI |
-| State management | `ObservableObject`, `@Published`, `@ObservedObject`, `@State` |
-| Networking | `URLSession` |
-| Data source | Jikan API |
-| IDE | Xcode |
+**Steps**
 
-## Project structure
+1. Open `swiftui_app.xcodeproj` in Xcode.
+2. Select the `swiftui_app` scheme and an iOS 16.4+ simulator or device.
+3. Run the app from Xcode.
+
+The project file declares no Swift Package Manager dependencies, so no package installation step is documented.
+
+> Note: I currently do not have access to a Mac environment, so the README documents the project structure and intent, but recent local execution has not been verified.
+
+---
+
+## Architecture & Decisions
+
+The app is organized by responsibility rather than by screen:
 
 ```text
 swiftui_app/
-├── Models/
-│   ├── Character.swift
-│   └── CharacterStore.swift
-├── Views/
-│   ├── ContentView.swift
-│   ├── CharacterCellView.swift
-│   └── CharacterDetailView.swift
-└── swiftui_appApp.swift
+├── ui/          SwiftUI views, view models, and view state
+├── domain/      Character model and repository contract
+└── data/        Jikan network source, transport model, mapper, and repository implementation
 ```
 
-## What this project demonstrates
+| Decision | Rationale in this project |
+| --- | --- |
+| SwiftUI views own view models with `@StateObject` | Keeps list and detail state with their respective screens. |
+| Repository contract separates UI from data access | View models request domain `Character` values instead of calling the network source directly. |
+| `CharacterVO` maps to `Character` | Keeps the API-facing representation in the data layer. |
+| `URLSession` and Foundation JSON parsing | Uses Apple frameworks already available to the app target. |
 
-- Native iOS development with SwiftUI.
-- Declarative UI composition with reusable views.
-- Navigation with `NavigationStack`.
-- Basic reactive state updates through `ObservableObject`.
-- Consuming REST API data from Swift.
-- Mapping API responses into app models.
-- Loading remote images and displaying detail information.
+The runtime path is: `SwiftUI View -> ViewModel -> Repository -> LocalImpl -> NetworkImpl -> Jikan API`. `LocalImpl` currently delegates to the network implementation; it is not a persisted local store.
 
-## Related project
+---
 
-The same idea was also implemented with UIKit in a separate repository:
+## Learning Focus
 
-- `AppUIKit` — UIKit version of this character browser.
-
-## Status
-
-Learning / portfolio project. It is not a production app, but it shows hands-on experience with native iOS fundamentals and the transition from UIKit to SwiftUI.
-
-> Note: I currently do not have access to a Mac environment, so the README documents the project structure and intent, but recent local execution has not been verified.
+- SwiftUI screen composition and navigation.
+- `ObservableObject` / `@Published` state updates.
+- Async data loading with `URLSession`.
+- Separating UI, domain, and data responsibilities.
