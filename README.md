@@ -21,7 +21,7 @@ This repository is part of a paired learning exercise: the same idea was also ex
 **Requirements**
 
 - macOS with Xcode 14.3 or later.
-- An iOS Simulator or connected iOS device running iOS 16.4 or later.
+- An iOS 16.4+ simulator or connected iOS device supported by the installed Xcode version.
 - Internet access to reach the Jikan API.
 
 **Steps**
